@@ -42,8 +42,11 @@ struct Storage {
 impl Storage {
     fn execute(&mut self, cmd: Command) -> Result<Option<String>, String> {
         match cmd {
-            Command::Set { key, value } => Ok(Storage::data.insert(key, value)),
-            Command::Get { key } => {}
+            Command::Set { key, value } => {
+                self.data.insert(key, value);
+                Ok(None)
+            }
+            Command::Get { key } => Err("GET not implement yet".to_string()),
         }
     }
 }
