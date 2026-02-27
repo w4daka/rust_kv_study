@@ -36,4 +36,7 @@ fn test_parse_unknown_command() {
 fn test_parse_set_not_enough_arguments() {
     let input = "SET mykey";
     let result = parse_command(input);
+    assert!(result.is_err());
+    let expected = Err("Not enough arguments".to_string());
+    assert_eq!(result, expected);
 }
