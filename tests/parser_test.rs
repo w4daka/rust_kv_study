@@ -40,3 +40,12 @@ fn test_parse_set_not_enough_arguments() {
     let expected = Err("Not enough arguments".to_string());
     assert_eq!(result, expected);
 }
+
+#[test]
+fn test_parse_get_not_enough_arguments() {
+    let input = "GET";
+    let result = parse_command(input);
+    assert!(result.is_err());
+    let expected = Err("Not enough arguments".to_string());
+    assert_eq!(result, expected);
+}
