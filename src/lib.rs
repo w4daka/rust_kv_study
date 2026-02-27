@@ -1,3 +1,4 @@
+use std::collections::HashMap;
 #[derive(PartialEq, Debug)]
 pub enum Command {
     Set { key: String, value: String },
@@ -32,4 +33,24 @@ pub fn parse_command(input: &str) -> Result<Command, String> {
         }
         _ => Err("Unknown command".to_string()),
     }
+}
+
+struct Storage {
+    data: HashMap<String, String>,
+}
+
+impl Storage {
+    fn execute(&mut self, cmd: Command) -> Result<Option<String>, String> {
+        match cmd {
+            Command::Set { key, value } => Ok(Storage::data.insert(key, value)),
+            Command::Get { key } => {}
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn test_strage_set() {}
 }
